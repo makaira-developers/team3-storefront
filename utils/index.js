@@ -66,4 +66,10 @@ export { default as mergeProductsAndBanners } from './core/mergeProductsAndBanne
 export { default as sendSendGridEmail } from './core/sendSendGridEmail'
 export { default as getProductDetailUrl } from './core/getProductDetailUrl'
 
+export {
+  default as OxidCheckoutContext,
+  OxidCheckoutProvider,
+  useOxidCheckout,
+} from './oxid/Checkout'
+
 /* Add project specific utils here */
