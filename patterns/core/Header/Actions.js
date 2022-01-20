@@ -4,41 +4,6 @@ import { useTranslation } from '../../../utils'
 
 import { useMutation, gql, useQuery } from '@apollo/client'
 
-const CREATE_BASKET = gql`
-  mutation createBasket {
-    basketCreate(basket: { title: "test1" }) {
-      id
-    }
-  }
-`
-
-const QUERY_BASKET = gql`
-  query someBasket($basketId: ID!) {
-    basket(basketId: $basketId) {
-      id
-      owner {
-        firstName
-      }
-      cost {
-        total
-      }
-      items {
-        id
-      }
-    }
-  }
-`
-
-const ADD_TO_BASKET = gql`
-  mutation addItem($productId: ID!, $basketId: ID!) {
-    basketAddItem(basketId: $basketId, productId: $productId, amount: 1) {
-      cost {
-        total
-      }
-    }
-  }
-`
-
 export default function Actions() {
   const { t } = useTranslation()
 
@@ -48,11 +13,6 @@ export default function Actions() {
     variables: { basketId: 'd3e174811a6049ee804a641d0cd429e6' },
     fetchPolicy: 'network-only ',
   })
-
-  //  useEffect(() => {
-  //  }, [])
-
-  console.log(data)
 
   const [
     addToBasket,
