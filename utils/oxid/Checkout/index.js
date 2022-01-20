@@ -1,4 +1,5 @@
 import React, { Component, useContext } from 'react'
+import { GlobalDataContext } from '../..'
 import {
   ApolloClient,
   InMemoryCache,
