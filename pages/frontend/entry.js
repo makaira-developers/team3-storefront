@@ -21,6 +21,41 @@ import {
 } from '../../utils'
 import ErrorPage from '../_error'
 
+
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  createHttpLink
+  gql,
+  useMutation,
+
+} from '@apollo/client'
+import { setContext } from '@apollo/client/link/context';
+const TOKEN =
+  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImlzcyI6Imh0dHBzOlwvXC9vYy1jb3JlLWRldi5veGlkLmRldlwvIn0.eyJpc3MiOiJodHRwczpcL1wvb2MtY29yZS1kZXYub3hpZC5kZXZcLyIsImF1ZCI6Imh0dHBzOlwvXC9vYy1jb3JlLWRldi5veGlkLmRldlwvIiwiaWF0IjoxNjQyNjg0Mjg1LCJuYmYiOjE2NDI2ODQyODUsImV4cCI6MTY0MjcxMzA4NSwic2hvcGlkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcmlkIjoib3hkZWZhdWx0YWRtaW4ifQ.j0uPyTudonjolrVtQgUJQyhFht3Pf6Z3f3qGl1H5Xq3QjLQquFPwmdT4hDIfAYRqynA7aHnAFoK6ARD7kYXWdw '
+
+
+  const httpLink = createHttpLink({
+    uri: 'https://oc-core-dev.oxid.dev/graphql/',
+  });
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  //const token = localStorage.getItem('token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: TOKEN,
+    }
+  }
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+})
+
 const pageComponents = {
   page: LandingPage,
   bundle: BundlePage,
@@ -103,6 +138,7 @@ export default class Index extends Component {
       <GlobalDataProvider {...this.props}>
         <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
           <TranslationProvider language={language}>
+          <ApolloProvider client={client}>
             <AbTestingProvider>
               <BaseLayout>
                 <HeaderWithProps />
@@ -112,6 +148,7 @@ export default class Index extends Component {
                 <FooterWithProps />
               </BaseLayout>
             </AbTestingProvider>
+         </ApolloProvider>,
           </TranslationProvider>
         </ConfigurationProvider>
       </GlobalDataProvider>
