@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { Button, FormattedPrice } from '../..'
 import { useTranslation } from '../../../utils'
 
+import { useMutation, gql } from '@apollo/client'
+
 const CREATE_BASKET = gql`
   mutation createBasket {
     basketCreate(basket: { title: "test1" }) {
@@ -10,7 +12,6 @@ const CREATE_BASKET = gql`
   }
 `
 
-// TODO: Remove hard-coded implementation
 export default function Actions() {
   const { t } = useTranslation()
 
@@ -18,7 +19,9 @@ export default function Actions() {
 
   useEffect(() => {
     mutateFunction()
-  })
+  }, [])
+
+  console.log('data', data)
 
   return (
     <>
