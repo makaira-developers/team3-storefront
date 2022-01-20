@@ -29,20 +29,48 @@ const QUERY_BASKET = gql`
   }
 `
 
+const ADD_TO_BASKET = gql`
+  mutation addItem($productId: ID!, $basketId: ID!){
+    basketAddItem(
+      basketId: $basketId,
+      productId: $productId,
+      amount: 1
+    ){
+      cost {
+        total
+      }
+    }
+  }
+`;
+
 export default function Actions() {
   const { t } = useTranslation()
 
   // const [mutateFunction, { data, loading, error }] = useMutation(CREATE_BASKET)
 
-  const { loading, error, data } = useQuery(QUERY_BASKET, {
-    variables: { basketId: 'd3e174811a6049ee804a641d0cd429e6' },
+  const { loading, error, data, refetch } = useQuery(QUERY_BASKET, {
+    variables: { basketId: 'd3e174811a6049ee804a641d0cd429e6' }
   })
 
-  useEffect(() => {
-    // mutateFunction()
-  }, [])
+//  useEffect(() => {
+//  }, [])
 
   console.log(data)
+
+  const [addToBasket, {
+    loading:loadingAddToBasket,
+    error:errorAddToBasket,
+    data:dataAddToBasket
+  }] = useMutation(ADD_TO_BASKET, {
+    variables: {
+      productId: 'dc5ffdf380e15674b56dd562a7cb6aec',
+      basketId: 'd3e174811a6049ee804a641d0cd429e6'
+    },
+    onCompleted: () => {
+      refetch();
+      refetch();
+    }
+  });
 
   return (
     <>
@@ -84,6 +112,14 @@ export default function Actions() {
 
           <FormattedPrice price={data?.basket?.cost?.total} />
         </Button>
+
+        <Button
+          variant="icon-only"
+          icon="cart"
+          href=""
+          className="header__action"
+          onClick={()=>addToBasket()}
+        />
       </div>
     </>
   )
