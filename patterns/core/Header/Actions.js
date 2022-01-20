@@ -30,18 +30,14 @@ const QUERY_BASKET = gql`
 `
 
 const ADD_TO_BASKET = gql`
-  mutation addItem($productId: ID!, $basketId: ID!){
-    basketAddItem(
-      basketId: $basketId,
-      productId: $productId,
-      amount: 1
-    ){
+  mutation addItem($productId: ID!, $basketId: ID!) {
+    basketAddItem(basketId: $basketId, productId: $productId, amount: 1) {
       cost {
         total
       }
     }
   }
-`;
+`
 
 export default function Actions() {
   const { t } = useTranslation()
@@ -49,28 +45,32 @@ export default function Actions() {
   // const [mutateFunction, { data, loading, error }] = useMutation(CREATE_BASKET)
 
   const { loading, error, data, refetch } = useQuery(QUERY_BASKET, {
-    variables: { basketId: 'd3e174811a6049ee804a641d0cd429e6' }
+    variables: { basketId: 'd3e174811a6049ee804a641d0cd429e6' },
+    fetchPolicy: 'network-only ',
   })
 
-//  useEffect(() => {
-//  }, [])
+  //  useEffect(() => {
+  //  }, [])
 
   console.log(data)
 
-  const [addToBasket, {
-    loading:loadingAddToBasket,
-    error:errorAddToBasket,
-    data:dataAddToBasket
-  }] = useMutation(ADD_TO_BASKET, {
+  const [
+    addToBasket,
+    {
+      loading: loadingAddToBasket,
+      error: errorAddToBasket,
+      data: dataAddToBasket,
+    },
+  ] = useMutation(ADD_TO_BASKET, {
     variables: {
       productId: 'dc5ffdf380e15674b56dd562a7cb6aec',
-      basketId: 'd3e174811a6049ee804a641d0cd429e6'
+      basketId: 'd3e174811a6049ee804a641d0cd429e6',
     },
     onCompleted: () => {
-      refetch();
-      refetch();
-    }
-  });
+      refetch()
+      refetch()
+    },
+  })
 
   return (
     <>
@@ -118,7 +118,7 @@ export default function Actions() {
           icon="cart"
           href=""
           className="header__action"
-          onClick={()=>addToBasket()}
+          onClick={() => addToBasket()}
         />
       </div>
     </>
