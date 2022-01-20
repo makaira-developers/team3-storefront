@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Button, FormattedPrice } from '../..'
 import { useTranslation } from '../../../utils'
 
-import { useMutation, gql } from '@apollo/client'
+import { useMutation, gql, useQuery } from '@apollo/client'
 
 const CREATE_BASKET = gql`
   mutation createBasket {
@@ -12,16 +12,37 @@ const CREATE_BASKET = gql`
   }
 `
 
+const QUERY_BASKET = gql`
+  query someBasket($basketId: ID!) {
+    basket(basketId: $basketId) {
+      id
+      owner {
+        firstName
+      }
+      cost {
+        total
+      }
+      items {
+        id
+      }
+    }
+  }
+`
+
 export default function Actions() {
   const { t } = useTranslation()
 
-  const [mutateFunction, { data, loading, error }] = useMutation(CREATE_BASKET)
+  // const [mutateFunction, { data, loading, error }] = useMutation(CREATE_BASKET)
+
+  const { loading, error, data } = useQuery(QUERY_BASKET, {
+    variables: { basketId: 'd3e174811a6049ee804a641d0cd429e6' },
+  })
 
   useEffect(() => {
-    mutateFunction()
+    // mutateFunction()
   }, [])
 
-  console.log('data', data)
+  console.log(data)
 
   return (
     <>
@@ -57,9 +78,11 @@ export default function Actions() {
           className="header__action"
           iconPosition="left"
         >
-          <span className="header__basket-bubble">2</span>
+          <span className="header__basket-bubble">
+            {data?.basket?.items?.length}
+          </span>
 
-          <FormattedPrice price="259.89" />
+          <FormattedPrice price={data?.basket?.cost?.total} />
         </Button>
       </div>
     </>
