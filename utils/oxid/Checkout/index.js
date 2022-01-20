@@ -33,14 +33,16 @@ const client = new ApolloClient({
 const OxidCheckoutContext = React.createContext()
 
 /* Then create a provider Component */
-function OxidCheckoutProvider() {
-  return (
-    <ApolloProvider client={client}>
-      <OxidCheckoutContext.Provider value={{}}>
-        {this.props.children}
-      </OxidCheckoutContext.Provider>
-    </ApolloProvider>
-  )
+class OxidCheckoutProvider extends Component {
+  render() {
+    return (
+      <ApolloProvider client={client}>
+        <OxidCheckoutContext.Provider value={{}}>
+          {this.props.children}
+        </OxidCheckoutContext.Provider>
+      </ApolloProvider>
+    )
+  }
 }
 
 function useOxidCheckout() {

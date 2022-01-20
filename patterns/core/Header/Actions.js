@@ -1,14 +1,11 @@
-import { useEffect } from 'react'
 import { Button, FormattedPrice } from '../..'
 import { useTranslation } from '../../../utils'
-
-import { useMutation, gql, useQuery } from '@apollo/client'
 
 export default function Actions() {
   const { t } = useTranslation()
 
   // const [mutateFunction, { data, loading, error }] = useMutation(CREATE_BASKET)
-
+  /*
   const { loading, error, data, refetch } = useQuery(QUERY_BASKET, {
     variables: { basketId: 'd3e174811a6049ee804a641d0cd429e6' },
     fetchPolicy: 'network-only ',
@@ -31,7 +28,8 @@ export default function Actions() {
       refetch()
     },
   })
-
+  */
+  // {data?.basket?.items?.length}
   return (
     <>
       <div className="header__actions header__actions--mobile">
@@ -66,11 +64,9 @@ export default function Actions() {
           className="header__action"
           iconPosition="left"
         >
-          <span className="header__basket-bubble">
-            {data?.basket?.items?.length}
-          </span>
+          <span className="header__basket-bubble">888</span>
 
-          <FormattedPrice price={data?.basket?.cost?.total} />
+          <FormattedPrice price="999" />
         </Button>
 
         <Button
@@ -78,7 +74,7 @@ export default function Actions() {
           icon="cart"
           href=""
           className="header__action"
-          onClick={() => addToBasket()}
+          // onClick={() => addToBasket()}
         />
       </div>
     </>

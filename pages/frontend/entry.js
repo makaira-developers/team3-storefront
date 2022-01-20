@@ -14,6 +14,7 @@ import {
   ConfigurationProvider,
   TranslationProvider,
   AbTestingProvider,
+  OxidCheckoutProvider,
   fetchPageData,
   fetchMenuData,
   redirect,
