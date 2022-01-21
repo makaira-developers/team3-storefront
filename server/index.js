@@ -53,6 +53,14 @@ app
       app.render(req, res, '/library/entry', req.query)
     })
 
+    server.get('/basket', (req, res) => {
+      app.render(req, res, '/frontend/basket', req.query)
+    })
+
+    server.get('/checkout', (req, res) => {
+      app.render(req, res, '/frontend/checkout', req.query)
+    })
+
     /**
      * Generate search routes for each language
      */

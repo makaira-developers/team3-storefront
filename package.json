@@ -32,6 +32,7 @@
     "dotenv-webpack": "^7.0.2",
     "express": "^4.17.1",
     "graphql": "^16.2.0",
+    "graphql-request": "^3.7.0",
     "iframe-resizer": "^3.6.2",
     "isomorphic-unfetch": "^3.1.0",
     "next": "^12.0.4",
@@ -44,6 +45,7 @@
     "react-image-magnifiers": "^1.4.0",
     "react-slick": "^0.28.1",
     "stylus": "^0.55.0",
+    "swr": "^1.1.2",
     "ua-parser-js": "^1.0.2"
   },
   "devDependencies": {
