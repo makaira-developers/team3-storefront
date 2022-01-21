@@ -41,9 +41,19 @@ function Checkout() {
         <Heading size="Eos" element="h1">
           Checkout
         </Heading>
+        <Heading size="Eos" element="h2">
+          Your basket
+        </Heading>
+        {/* <Basket /> */}
+        TODO: add basket component ...
+        <Heading size="Eos" element="h2">
+          Your data
+        </Heading>
         <CheckoutUser />
+        <Heading size="Eos" element="h2">
+          Choose payment
+        </Heading>
         <CheckoutPayment />
-
         <Button
           id="cancelButton"
           type="cancel"
