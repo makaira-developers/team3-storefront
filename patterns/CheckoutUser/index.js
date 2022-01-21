@@ -33,6 +33,7 @@ function CheckoutUser({ user }) {
     <section className="checkout-user">
       <p>
         Name: {user?.billingAddress?.firstName} {user?.billingAddress?.lastName}
+        <br /> <b>TODO</b> - FormField values do not work yet ... ?!
       </p>
 
       <div className="contact-form__content">
