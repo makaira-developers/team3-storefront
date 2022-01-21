@@ -30,6 +30,14 @@ const BASKET_COST_QUERYPART = `
     } 
   }
 `
+const COST_QUERYPART = gql`
+  cost {
+    price
+    currency {
+      name
+    }
+  }
+`
 
 const BASKET_DELIVERY_QUERYPART = `
   deliveryMethod {
@@ -72,6 +80,14 @@ const BASKET_EXTENDED_QUERYPART = `
   ${ITEMS_QUERYPART}
 `
 
+const PAYMENTTYPES_QUERY_PART = gql`
+ paymentTypes {
+  id
+  title
+  ${COST_QUERYPART}
+ }
+`
+
 const CREATE_BASKET = gql`
   mutation createBasket($basketTitle: String!) {
     basketCreate(basket: { title: $basketTitle }) {
@@ -80,7 +96,7 @@ const CREATE_BASKET = gql`
   }
 `
 
-const TEST_FETCH_TOKEN = gql`
+const FETCH_ANONYMOUS_TOKEN = gql`
   query fetchToken {
     token
   }
@@ -90,7 +106,7 @@ const QUERY_BASKET = gql`
   query singleBasket($basketId: ID!) {
     basket(basketId: $basketId) {
       id
-      ${BASKET_CONTENTS_QUERYPART}
+      ${BASKET_EXTENDED_QUERYPART}
     }
   }
 `
@@ -118,17 +134,23 @@ const REMOVE_FROM_BASKET = gql`
 `
 
 const FETCH_TOKEN = gql`
-  query fetchToken($userName: String!, $password: String!) {
-    token(username: $userName, password: $password)
+  query fetchToken ($userName: String!, $password: String!) {
+    token (
+      username: $userName
+      password: $password
+    )  
   }
 `
 const PLACE_ORDER = gql`
-  mutation placeOrder($basketId: ID!) {
-    placeOrder(basketId: $basketId, confirmTermsAndConditions: true) {
+  mutation placeOrder ($basketId: ID!){
+    placeOrder(
+      basketId: $basketId
+      confirmTermsAndConditions: true
+    ) {
       id
       orderNumber
     }
-  }
+ }
 `
 
 const CUSTOMER_DETAILS = gql`
@@ -164,6 +186,29 @@ const SET_PAYMENT_METHOD = gql`
     }
  }
 `
+const QUERY_BASKET_DELIVERY_METHODS = gql`
+  query basketDeliveryMethods ($basketId: ID!) {
+    basketDeliveryMethods (
+      basketId: $basketId
+    ) {
+      id
+      title
+      ${COST_QUERYPART}
+      ${PAYMENTTYPES_QUERY_PART}
+    }
+  }
+`
+
+const QUERY_BASKET_PAYMENT_METHODS = gql`
+  query basketPaymentMethods ($basketId: ID!) {
+    basketPayments (
+      basketId: $basketId
+    ) {
+      ${PAYMENTTYPES_QUERY_PART}
+    }
+  }
+`
+
 export {
   FETCH_TOKEN,
   CUSTOMER_DETAILS,
@@ -171,8 +216,10 @@ export {
   ADD_TO_BASKET,
   REMOVE_FROM_BASKET,
   QUERY_BASKET,
+  QUERY_BASKET_DELIVERY_METHODS,
+  QUERY_BASKET_PAYMENT_METHODS,
   SET_DELIVERY_METHOD,
   SET_PAYMENT_METHOD,
   PLACE_ORDER,
-  TEST_FETCH_TOKEN,
+  FETCH_ANONYMOUS_TOKEN,
 }
