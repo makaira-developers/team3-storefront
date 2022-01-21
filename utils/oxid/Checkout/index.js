@@ -16,7 +16,7 @@ import {
 } from './querys'
 
 const TOKEN =
-  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImlzcyI6Imh0dHBzOi8vYXJiYXRvc2tsdWJhcy5ldS8ifQ.eyJpc3MiOiJodHRwczovL2FyYmF0b3NrbHViYXMuZXUvIiwiYXVkIjoiaHR0cHM6Ly9hcmJhdG9za2x1YmFzLmV1LyIsImlhdCI6MTY0Mjc3MzE1Mi45ODk4MjIsIm5iZiI6MTY0Mjc3MzE1Mi45ODk4MjIsImV4cCI6MTY0MjgwMTk1My4wMDE1MSwic2hvcGlkIjoxLCJ1c2VybmFtZSI6Im1ha2FpcmFAb3hpZC1lc2FsZXMuY29tIiwidXNlcmlkIjoiM2Y4NjU3ZTdmN2Q2YjcwZjMyOTMyMTE4YzllOTQxM2YiLCJ1c2VyYW5vbnltb3VzIjpmYWxzZX0.IuS_NCeV0CH1uhfCc1XgsFK3MWIsaTyI1277Qy0lnIhojyoHGHXBUbDBbk20YtpAoHVrUYwTYWlY_Cj8wvERYA '
+  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImlzcyI6Imh0dHBzOlwvXC9vYy1jb3JlLWRldi5veGlkLmRldlwvIn0.eyJpc3MiOiJodHRwczpcL1wvb2MtY29yZS1kZXYub3hpZC5kZXZcLyIsImF1ZCI6Imh0dHBzOlwvXC9vYy1jb3JlLWRldi5veGlkLmRldlwvIiwiaWF0IjoxNjQyNzU0NDc4LCJuYmYiOjE2NDI3NTQ0NzgsImV4cCI6MTY0Mjc4MzI3OCwic2hvcGlkIjoxLCJ1c2VybmFtZSI6InVzZXJAb3hpZC1lc2FsZXMuY29tIiwidXNlcmlkIjoiODk3MDYwOWVhMTQxZjE3NmE3MzA0MWRlMGQwNzgxZDUifQ.ud90MJrAKNgg5s9eyI8dQR5Cb3FWqDo47zDC5oKs5NypfK5_nb3TA-Pfaq9mhpiGlWnPtaslNJX9XbDfVe75hw'
 
 const httpLink = createHttpLink({
   uri: process.env.OXID_GRAPHQL_URL,
@@ -50,7 +50,7 @@ function OxidCheckoutProvider(props) {
 }
 
 function InnerOxidCheckoutProvider(props) {
-  const staticBasketId = '7d214c9df71e47f5c08e6a51613f9900'
+  const staticBasketId = 'c84df67023ee5c42a67928d8d436b2c8'
 
   const { data: basket, refetch } = useQuery(QUERY_BASKET, {
     variables: { basketId: staticBasketId },
