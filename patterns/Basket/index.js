@@ -1,4 +1,4 @@
-import { Button, FormattedPrice } from '..'
+import { Button } from '..'
 
 function Basket({ basket, click }) {
   return (
@@ -6,21 +6,21 @@ function Basket({ basket, click }) {
       <h3>Basket</h3>
 
       <div id="basketContent">
-        {basket?.items.map((item) => (
-          <div class="basketItem" key={item.id}>
-            <div class="basketItemIcon">
+        {basket?.items?.map((item) => (
+          <div className="basketItem" key={item.id}>
+            <div className="basketItemIcon">
               <img src={item.product.imageGallery.icon} />
             </div>
-            <div class="basketItemInfo">
+            <div className="basketItemInfo">
               <h4>{item.product.title}</h4>
               <div>{item.product.shortDescription}</div>
             </div>
-            <div class="basketItemSetting">
+            <div className="basketItemSetting">
               Price: {item.product.price.price}
               <br />
               Amount: {item.amount}
             </div>
-            <div class="basketItemActions">
+            <div className="basketItemActions">
               <Button
                 variant="icon-only"
                 icon="times"
@@ -32,8 +32,8 @@ function Basket({ basket, click }) {
         ))}
       </div>
 
-      <div class="clear"></div>
-      <div class="basketTotal">Basket total: {basket?.cost.total}</div>
+      <div className="clear"></div>
+      <div className="basketTotal">Basket total: {basket?.cost?.total}</div>
     </section>
   )
 }

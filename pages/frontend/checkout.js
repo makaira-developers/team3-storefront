@@ -8,6 +8,7 @@ import {
   TranslationProvider,
   AbTestingProvider,
   fetchMenuData,
+  OxidCheckoutProvider,
 } from '../../utils'
 import ErrorPage from '../_error'
 
@@ -46,13 +47,15 @@ export default class Index extends Component {
       <GlobalDataProvider {...this.props}>
         <ConfigurationProvider assetUrl={process.env.MAKAIRA_ASSET_URL}>
           <TranslationProvider language={language}>
-            <AbTestingProvider>
-              <BaseLayout>
-                <HeaderWithProps />
-                <CheckoutPage />
-                <FooterWithProps />
-              </BaseLayout>
-            </AbTestingProvider>
+            <OxidCheckoutProvider>
+              <AbTestingProvider>
+                <BaseLayout>
+                  <HeaderWithProps />
+                  <CheckoutPage />
+                  <FooterWithProps />
+                </BaseLayout>
+              </AbTestingProvider>
+            </OxidCheckoutProvider>
           </TranslationProvider>
         </ConfigurationProvider>
       </GlobalDataProvider>
