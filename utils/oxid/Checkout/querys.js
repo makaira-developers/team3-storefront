@@ -1,4 +1,4 @@
-const CREATE_BASKET = gql`
+const CREATE_BASKET = `
   mutation createBasket {
     basketCreate(basket: { title: "test1" }) {
       id
@@ -6,16 +6,18 @@ const CREATE_BASKET = gql`
   }
 `
 
-const QUERY_BASKET = gql`
+const COST = `cost {
+    total
+  }`
+
+const QUERY_BASKET = `
   query someBasket($basketId: ID!) {
     basket(basketId: $basketId) {
       id
       owner {
         firstName
       }
-      cost {
-        total
-      }
+      ${COST}
       items {
         id
       }
@@ -23,7 +25,7 @@ const QUERY_BASKET = gql`
   }
 `
 
-const ADD_TO_BASKET = gql`
+const ADD_TO_BASKET = `
   mutation addItem($productId: ID!, $basketId: ID!) {
     basketAddItem(basketId: $basketId, productId: $productId, amount: 1) {
       cost {
