@@ -71,4 +71,8 @@ export default {
   DELETE_SLOT: 'Delete Slot',
   INCOMPATIBLE_PRODUCT: (product) =>
     `Product ${product} is not valid for this bundle`,
+  CHECKOUT_FORM_SEND_BUTTON: 'Place order',
+  CHECKOUT_FORM_CANCEL_BUTTON: 'Back',
+  CHECKOUT_FORM_ACCEPT_AGB: 'Please accept our terms.',
+  CHECKOUT_FORM_PAYMENT_HEADLINE: 'Payment',
 }
