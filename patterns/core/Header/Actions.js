@@ -1,8 +1,14 @@
 import { Button, FormattedPrice } from '../..'
-import { useTranslation } from '../../../utils'
+import { useTranslation, useOxidCheckout } from '../../../utils'
 
 export default function Actions() {
   const { t } = useTranslation()
+  const { basket } = useOxidCheckout()
+
+  const amount = basket.items.reduce(
+    (previousValue, currentValue) => previousValue + currentValue.amount,
+    0
+  )
 
   // const [mutateFunction, { data, loading, error }] = useMutation(CREATE_BASKET)
   /*
@@ -60,13 +66,13 @@ export default function Actions() {
 
         <Button
           icon="cart"
-          href="#todo"
+          href="/basket"
           className="header__action"
           iconPosition="left"
         >
-          <span className="header__basket-bubble">888</span>
+          <span className="header__basket-bubble">{amount}</span>
 
-          <FormattedPrice price="999" />
+          <FormattedPrice price={basket?.cost?.total} />
         </Button>
 
         <Button
