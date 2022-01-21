@@ -88,7 +88,7 @@ const PAYMENTTYPES_QUERY_PART = `
  }
 `
 
-const CREATE_BASKET = gql`
+const CREATE_BASKET = `
   mutation createBasket($basketTitle: String!) {
     basketCreate(basket: { title: $basketTitle }) {
       id
