@@ -30,7 +30,7 @@ const BASKET_COST_QUERYPART = `
     } 
   }
 `
-const COST_QUERYPART = gql`
+const COST_QUERYPART = `
   cost {
     price
     currency {
@@ -80,7 +80,7 @@ const BASKET_EXTENDED_QUERYPART = `
   ${ITEMS_QUERYPART}
 `
 
-const PAYMENTTYPES_QUERY_PART = gql`
+const PAYMENTTYPES_QUERY_PART = `
  paymentTypes {
   id
   title
@@ -134,23 +134,17 @@ const REMOVE_FROM_BASKET = gql`
 `
 
 const FETCH_TOKEN = gql`
-  query fetchToken ($userName: String!, $password: String!) {
-    token (
-      username: $userName
-      password: $password
-    )  
+  query fetchToken($userName: String!, $password: String!) {
+    token(username: $userName, password: $password)
   }
 `
 const PLACE_ORDER = gql`
-  mutation placeOrder ($basketId: ID!){
-    placeOrder(
-      basketId: $basketId
-      confirmTermsAndConditions: true
-    ) {
+  mutation placeOrder($basketId: ID!) {
+    placeOrder(basketId: $basketId, confirmTermsAndConditions: true) {
       id
       orderNumber
     }
- }
+  }
 `
 
 const CUSTOMER_DETAILS = gql`

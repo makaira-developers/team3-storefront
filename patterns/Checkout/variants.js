@@ -5,9 +5,7 @@ export default [
       user: {
         id: 'abc123456',
       },
-      payment: {
-        id: 'invoice',
-      },
+      payments: [],
     },
   },
 ]

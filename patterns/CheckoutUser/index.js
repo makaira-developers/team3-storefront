@@ -1,10 +1,10 @@
-import FormField from './../core/ContactForm/FormField'
-import FormSelect from './../core/ContactForm/FormSelect'
-import FormInput from './../core/ContactForm/FormInput'
+import FormField from './FormField'
+import FormSelect from './FormSelect'
+import FormInput from './FormInput'
 
 import { useTranslation } from '../../utils'
 
-function CheckoutUser() {
+function CheckoutUser({ user }) {
   const { t } = useTranslation()
 
   const genderOptions = [
@@ -18,8 +18,21 @@ function CheckoutUser() {
     },
   ]
 
+  const countryOptions = [
+    {
+      value: 'a7c40f631fc920687.20179984',
+      label: 'Germany',
+    },
+    {
+      value: 'a7c40f6320aeb2ec2.72885259',
+      label: 'Austria',
+    },
+  ]
+
   return (
     <section className="checkout-user">
+      <p>Firstname: {user?.billingAddress?.firstName}</p>
+
       <div className="contact-form__content">
         <FormField
           name="gender"
@@ -28,29 +41,54 @@ function CheckoutUser() {
         >
           <FormSelect options={genderOptions}></FormSelect>
         </FormField>
-        <FormField name="firstName" label={t('CONTACT_FORM_FIRST_NAME')}>
+        <FormField
+          name="firstName"
+          value={user?.billingAddress?.firstName}
+          label={t('CONTACT_FORM_FIRST_NAME')}
+        >
           <FormInput type="text"></FormInput>
         </FormField>
-        <FormField name="lastName" label={t('CONTACT_FORM_SURNAME')}>
+        <FormField
+          name="lastName"
+          value={user?.billingAddress?.lastName}
+          label={t('CONTACT_FORM_SURNAME')}
+        >
           <FormInput type="text"></FormInput>
         </FormField>
-        <FormField name="street" label={t('CHECKOUT_FORM_STREET')}>
+        <FormField
+          name="street"
+          value={user?.billingAddress?.street}
+          label={t('CHECKOUT_FORM_STREET')}
+        >
           <FormInput type="text"></FormInput>
         </FormField>
-        <FormField name="streetNumber" label={t('CHECKOUT_FORM_STREET_NUMBER')}>
+        <FormField
+          name="streetNumber"
+          value={user?.billingAddress?.streetNumber}
+          label={t('CHECKOUT_FORM_STREET_NUMBER')}
+        >
           <FormInput type="text"></FormInput>
         </FormField>
-        <FormField name="zip" label={t('CHECKOUT_FORM_ZIP')}>
+        <FormField
+          name="zip"
+          value={user?.billingAddress?.zip}
+          label={t('CHECKOUT_FORM_ZIP')}
+        >
           <FormInput type="text"></FormInput>
         </FormField>
-        <FormField name="city" label={t('CHECKOUT_FORM_CITY')}>
+        <FormField
+          name="city"
+          value={user?.billingAddress?.city}
+          label={t('CHECKOUT_FORM_CITY')}
+        >
           <FormInput type="text"></FormInput>
         </FormField>
-        <FormField name="state" label={t('CHECKOUT_FORM_STATE')}>
-          <FormInput type="text"></FormInput>
-        </FormField>
-        <FormField name="country" label={t('CHECKOUT_FORM_COUNTRY')}>
-          <FormInput type="text"></FormInput>
+        <FormField
+          name="country"
+          value={user?.billingAddress?.country}
+          label={t('CHECKOUT_FORM_COUNTRY')}
+        >
+          <FormSelect options={countryOptions}></FormSelect>
         </FormField>
       </div>
     </section>

@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import fetch from 'isomorphic-unfetch'
 
 import { Heading, Button } from '../'
-import FormStatus from './../core/ContactForm/FormStatus'
+import FormStatus from './FormStatus'
 import CheckoutUser from '../CheckoutUser'
 import CheckoutPayment from '../CheckoutPayment'
 import { useTranslation } from '../../utils'
 
-function Checkout() {
+function Checkout({ user, payments }) {
   const { t } = useTranslation()
   const [sentStatus, setSentStatus] = useState(null)
 
@@ -41,25 +41,15 @@ function Checkout() {
         <Heading size="Eos" element="h1">
           Checkout
         </Heading>
-        <Heading size="Eos" element="h2">
-          Your basket
-        </Heading>
-        {/* <Basket /> */}
-        TODO: add basket component ...
+
         <Heading size="Eos" element="h2">
           Your data
         </Heading>
-        <CheckoutUser />
+        <CheckoutUser user={user} />
         <Heading size="Eos" element="h2">
           Choose payment
         </Heading>
-        <CheckoutPayment
-          selected="invoice"
-          payments={[
-            { id: 'invoice', name: 'Invoice' },
-            { id: 'paypal', name: 'Paypal' },
-          ]}
-        />
+        <CheckoutPayment selected="invoice" payments={payments} />
         <Button
           id="cancelButton"
           type="cancel"

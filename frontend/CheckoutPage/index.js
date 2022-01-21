@@ -6,7 +6,13 @@ export default function CheckoutPage() {
   return (
     <main>
       <Basket basket={basket} />
-      <Checkout />
+      <Checkout
+        user={{ billingAddress: { firstName: 'Tom' } }}
+        payments={[
+          { id: 'invoice', name: 'Invoice' },
+          { id: 'paypal', name: 'Paypal' },
+        ]}
+      />
     </main>
   )
 }
