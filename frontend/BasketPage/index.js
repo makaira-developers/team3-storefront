@@ -1,9 +1,12 @@
 import { Basket } from '../../patterns'
+import { useOxidCheckout } from '../../utils'
 
 export default function BasketPage() {
+  const { basket } = useOxidCheckout()
+  console.log(basket)
   return (
     <main>
-      <Basket />
+      <Basket basket={basket} />
     </main>
   )
 }

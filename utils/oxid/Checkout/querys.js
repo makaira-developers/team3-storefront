@@ -1,5 +1,6 @@
+import { gql } from '@apollo/client'
 
-const PRODUCT_QUERYPART = gql`
+const PRODUCT_QUERYPART = `
     product {
       id
       title
@@ -13,7 +14,7 @@ const PRODUCT_QUERYPART = gql`
     }
 `
 
-const ITEMS_QUERYPART = gql`
+const ITEMS_QUERYPART = `
   items {
     id
     amount
@@ -21,7 +22,7 @@ const ITEMS_QUERYPART = gql`
   }
 `
 
-const BASKET_COST_QUERYPART = gql`
+const BASKET_COST_QUERYPART = `
   cost {
     total
     currency {
@@ -30,21 +31,21 @@ const BASKET_COST_QUERYPART = gql`
   }
 `
 
-const BASKET_DELIVERY_QUERYPART = gql`
+const BASKET_DELIVERY_QUERYPART = `
   deliveryMethod {
     id
     title
   }
 `
 
-const BASKET_PAYMENT_QUERYPART = gql`
+const BASKET_PAYMENT_QUERYPART = `
   payment{
     id
     title
   }
 `
 
-const INVOICEADDRESS_QUERYPART = gql`
+const INVOICEADDRESS_QUERYPART = `
   invoiceAddress {
     salutation
     firstName
@@ -59,12 +60,12 @@ const INVOICEADDRESS_QUERYPART = gql`
   }
 `
 
-const BASKET_CONTENTS_QUERYPART = gql`
+const BASKET_CONTENTS_QUERYPART = `
   ${BASKET_COST_QUERYPART}
   ${ITEMS_QUERYPART}
 `
 
-const BASKET_EXTENDED_QUERYPART = gql`
+const BASKET_EXTENDED_QUERYPART = `
   ${BASKET_DELIVERY_QUERYPART}
   ${BASKET_PAYMENT_QUERYPART}
   ${BASKET_COST_QUERYPART}
@@ -72,10 +73,16 @@ const BASKET_EXTENDED_QUERYPART = gql`
 `
 
 const CREATE_BASKET = gql`
-  mutation createBasket ($basketTitle: String!) {
+  mutation createBasket($basketTitle: String!) {
     basketCreate(basket: { title: $basketTitle }) {
       id
     }
+  }
+`
+
+const TEST_FETCH_TOKEN = gql`
+  query fetchToken {
+    token
   }
 `
 
@@ -83,7 +90,7 @@ const QUERY_BASKET = gql`
   query singleBasket($basketId: ID!) {
     basket(basketId: $basketId) {
       id
-      ${BASKET_EXTENDED_QUERYPART}
+      ${BASKET_CONTENTS_QUERYPART}
     }
   }
 `
@@ -94,6 +101,7 @@ const ADD_TO_BASKET = gql`
       id
       ${BASKET_CONTENTS_QUERYPART}
   }
+}
 `
 
 const REMOVE_FROM_BASKET = gql`
@@ -110,23 +118,17 @@ const REMOVE_FROM_BASKET = gql`
 `
 
 const FETCH_TOKEN = gql`
-  query fetchToken ($userName: String!, $password: String!) {
-    token (
-      username: $userName
-      password: $password
-    )  
+  query fetchToken($userName: String!, $password: String!) {
+    token(username: $userName, password: $password)
   }
 `
 const PLACE_ORDER = gql`
-  mutation placeOrder ($basketId: ID!){
-    placeOrder(
-      basketId: $basketId
-      confirmTermsAndConditions: true
-    ) {
+  mutation placeOrder($basketId: ID!) {
+    placeOrder(basketId: $basketId, confirmTermsAndConditions: true) {
       id
       orderNumber
     }
- }
+  }
 `
 
 const CUSTOMER_DETAILS = gql`
@@ -162,4 +164,15 @@ const SET_PAYMENT_METHOD = gql`
     }
  }
 `
-export { FETCH_TOKEN, CUSTOMER_DETAILS, CREATE_BASKET, ADD_TO_BASKET, REMOVE_FROM_BASKET, QUERY_BASKET, SET_DELIVERY_METHOD, SET_PAYMENT_METHOD, PLACE_ORDER}
+export {
+  FETCH_TOKEN,
+  CUSTOMER_DETAILS,
+  CREATE_BASKET,
+  ADD_TO_BASKET,
+  REMOVE_FROM_BASKET,
+  QUERY_BASKET,
+  SET_DELIVERY_METHOD,
+  SET_PAYMENT_METHOD,
+  PLACE_ORDER,
+  TEST_FETCH_TOKEN,
+}

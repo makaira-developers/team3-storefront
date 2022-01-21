@@ -6,17 +6,18 @@ function Basket({ basket, click }) {
       <h3>Basket</h3>
 
       <div id="basketContent">
-        {basket.items.map((item) => (
+        {basket?.items.map((item) => (
           <div class="basketItem" key={item.id}>
             <div class="basketItemIcon">
-              <img src={item.product.imageGallery.icon}/>
+              <img src={item.product.imageGallery.icon} />
             </div>
             <div class="basketItemInfo">
               <h4>{item.product.title}</h4>
               <div>{item.product.shortDescription}</div>
             </div>
             <div class="basketItemSetting">
-              Price: {item.product.price.price}<br/>
+              Price: {item.product.price.price}
+              <br />
               Amount: {item.amount}
             </div>
             <div class="basketItemActions">
@@ -32,9 +33,7 @@ function Basket({ basket, click }) {
       </div>
 
       <div class="clear"></div>
-      <div class="basketTotal">
-        Basket total: {basket.cost.total}
-      </div>
+      <div class="basketTotal">Basket total: {basket?.cost.total}</div>
     </section>
   )
 }
