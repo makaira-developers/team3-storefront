@@ -1,10 +1,10 @@
 import { Heading } from '../'
 
-function CheckoutPayment({ payments }) {
+function CheckoutPayment({ selected, payments }) {
   return (
     <section className="checkout-payment">
       <Heading size="Eos" element="h1">
-        Payments
+        Payment: {selected}
       </Heading>
 
       <ul role="listbox" className="paymentSelect">

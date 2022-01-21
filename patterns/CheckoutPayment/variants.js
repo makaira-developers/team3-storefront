@@ -2,10 +2,10 @@ export default [
   {
     name: 'Default',
     props: {
-      selected: '',
+      selected: 'invoice',
       payments: [
         {
-          name: 'Invoice',
+          name: 'Invoice!',
           id: 'invoice',
         },
         {

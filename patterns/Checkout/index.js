@@ -53,7 +53,13 @@ function Checkout() {
         <Heading size="Eos" element="h2">
           Choose payment
         </Heading>
-        <CheckoutPayment />
+        <CheckoutPayment
+          selected="invoice"
+          payments={[
+            { id: 'invoice', name: 'Invoice' },
+            { id: 'paypal', name: 'Paypal' },
+          ]}
+        />
         <Button
           id="cancelButton"
           type="cancel"
