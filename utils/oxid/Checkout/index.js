@@ -8,6 +8,7 @@ import {
   useMutation,
 } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
+
 import {
   QUERY_BASKET,
   ADD_TO_BASKET,
@@ -16,10 +17,10 @@ import {
 } from './querys'
 
 const TOKEN =
-  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImlzcyI6Imh0dHBzOi8vYXJiYXRvc2tsdWJhcy5ldS8ifQ.eyJpc3MiOiJodHRwczovL2FyYmF0b3NrbHViYXMuZXUvIiwiYXVkIjoiaHR0cHM6Ly9hcmJhdG9za2x1YmFzLmV1LyIsImlhdCI6MTY0Mjc3MzE1Mi45ODk4MjIsIm5iZiI6MTY0Mjc3MzE1Mi45ODk4MjIsImV4cCI6MTY0MjgwMTk1My4wMDE1MSwic2hvcGlkIjoxLCJ1c2VybmFtZSI6Im1ha2FpcmFAb3hpZC1lc2FsZXMuY29tIiwidXNlcmlkIjoiM2Y4NjU3ZTdmN2Q2YjcwZjMyOTMyMTE4YzllOTQxM2YiLCJ1c2VyYW5vbnltb3VzIjpmYWxzZX0.IuS_NCeV0CH1uhfCc1XgsFK3MWIsaTyI1277Qy0lnIhojyoHGHXBUbDBbk20YtpAoHVrUYwTYWlY_Cj8wvERYA '
+  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImlzcyI6Imh0dHBzOi8vYXJiYXRvc2tsdWJhcy5ldS8ifQ.eyJpc3MiOiJodHRwczovL2FyYmF0b3NrbHViYXMuZXUvIiwiYXVkIjoiaHR0cHM6Ly9hcmJhdG9za2x1YmFzLmV1LyIsImlhdCI6MTY0Mjc3MzE1Mi45ODk4MjIsIm5iZiI6MTY0Mjc3MzE1Mi45ODk4MjIsImV4cCI6MTY0MjgwMTk1My4wMDE1MSwic2hvcGlkIjoxLCJ1c2VybmFtZSI6Im1ha2FpcmFAb3hpZC1lc2FsZXMuY29tIiwidXNlcmlkIjoiM2Y4NjU3ZTdmN2Q2YjcwZjMyOTMyMTE4YzllOTQxM2YiLCJ1c2VyYW5vbnltb3VzIjpmYWxzZX0.IuS_NCeV0CH1uhfCc1XgsFK3MWIsaTyI1277Qy0lnIhojyoHGHXBUbDBbk20YtpAoHVrUYwTYWlY_Cj8wvERYA'
 
 const httpLink = createHttpLink({
-  uri: process.env.OXID_GRAPHQL_URL,
+  uri: '/graphql/',
 })
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists

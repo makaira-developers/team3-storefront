@@ -6,6 +6,7 @@ const allLanguages = require('../config/allLanguages')
 const parser = require('ua-parser-js')
 const bodyParser = require('body-parser')
 const sendSendGridEmail = require('../utils/core/sendSendGridEmail')
+const { createProxyMiddleware } = require('http-proxy-middleware')
 
 const logError = require('./utils/logError')
 
@@ -39,6 +40,17 @@ app
         app.render(req, res, '/frontend/browser', req.query)
       }
     })
+
+    server.use(
+      '/graphql/',
+      createProxyMiddleware({
+        target: process.env.OXID_GRAPHQL_URL,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/graphql/': '', // rewrite path
+        },
+      })
+    )
 
     /**
      * Route handler for pattern library
