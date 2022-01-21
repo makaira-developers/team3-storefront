@@ -75,4 +75,10 @@ export default {
   CHECKOUT_FORM_CANCEL_BUTTON: 'Back',
   CHECKOUT_FORM_ACCEPT_AGB: 'Please accept our terms.',
   CHECKOUT_FORM_PAYMENT_HEADLINE: 'Payment',
+  CHECKOUT_FORM_STREET: 'Street',
+  CHECKOUT_FORM_STREET_NUMBER: 'Street number',
+  CHECKOUT_FORM_ZIP: 'Zip',
+  CHECKOUT_FORM_CITY: 'City',
+  CHECKOUT_FORM_STATE: 'State',
+  CHECKOUT_FORM_COUNTRY: 'Country',
 }

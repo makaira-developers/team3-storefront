@@ -87,4 +87,10 @@ export default {
   CHECKOUT_FORM_CANCEL_BUTTON: 'Zurück',
   CHECKOUT_FORM_ACCEPT_AGB: 'Bitte bestätigen Sie unsere AGB.',
   CHECKOUT_FORM_PAYMENT_HEADLINE: 'Zahlungsart',
+  CHECKOUT_FORM_STREET: 'Strasse',
+  CHECKOUT_FORM_STREET_NUMBER: 'Hausnummer',
+  CHECKOUT_FORM_ZIP: 'Postleitzahl',
+  CHECKOUT_FORM_CITY: 'Stadt',
+  CHECKOUT_FORM_STATE: 'Bundesland',
+  CHECKOUT_FORM_COUNTRY: 'Land',
 }
