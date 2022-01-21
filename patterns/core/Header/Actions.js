@@ -5,7 +5,7 @@ export default function Actions() {
   const { t } = useTranslation()
   const { basket } = useOxidCheckout()
 
-  const amount = basket.items.reduce(
+  const amount = basket.items?.reduce(
     (previousValue, currentValue) => previousValue + currentValue.amount,
     0
   )
