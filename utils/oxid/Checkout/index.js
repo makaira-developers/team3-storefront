@@ -50,7 +50,7 @@ function OxidCheckoutProvider(props) {
 }
 
 function InnerOxidCheckoutProvider(props) {
-  const staticBasketId = 'c84df67023ee5c42a67928d8d436b2c8'
+  const staticBasketId = 'ae86185a46a1af19d8fc76abda014308'
 
   const { data: basket, refetch } = useQuery(QUERY_BASKET, {
     variables: { basketId: staticBasketId },
