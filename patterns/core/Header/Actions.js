@@ -7,7 +7,7 @@ export default function Actions() {
   // const [mutateFunction, { data, loading, error }] = useMutation(CREATE_BASKET)
   /*
   const { loading, error, data, refetch } = useQuery(QUERY_BASKET, {
-    variables: { basketId: 'd3e174811a6049ee804a641d0cd429e6' },
+    variables: { basketId: 'c84df67023ee5c42a67928d8d436b2c8' },
     fetchPolicy: 'network-only ',
   })
 
@@ -21,7 +21,7 @@ export default function Actions() {
   ] = useMutation(ADD_TO_BASKET, {
     variables: {
       productId: 'dc5ffdf380e15674b56dd562a7cb6aec',
-      basketId: 'd3e174811a6049ee804a641d0cd429e6',
+      basketId: 'c84df67023ee5c42a67928d8d436b2c8',
     },
     onCompleted: () => {
       refetch()
