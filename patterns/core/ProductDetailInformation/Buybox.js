@@ -3,18 +3,13 @@ import { Dropdown } from '../..'
 import ProductPrices from './ProductPrices'
 import ProductAvailability from './ProductAvailability'
 import ProductActions from './ProductActions'
+import { useOxidCheckout } from '../../../utils'
 
 // TODO: Remove hard-coded implementation
 export default function Buybox(props) {
   const { chooseVariant = () => {}, variantsAttributeStr = [] } = props
-  const [loading, setLoading] = useState(false)
-
-  const handleAddToCart = () => {
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 3000)
-  }
+  const [loading] = useState(false)
+  const { addToBasket } = useOxidCheckout()
 
   return (
     <div className="product-detail-information__buybox">
@@ -41,7 +36,7 @@ export default function Buybox(props) {
       <ProductActions
         {...props}
         loading={loading}
-        addToCart={handleAddToCart}
+        addToCart={() => addToBasket({ productId: props.id, amount: 1 })}
       />
     </div>
   )

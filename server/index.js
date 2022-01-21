@@ -61,6 +61,10 @@ app
       app.render(req, res, '/frontend/checkout', req.query)
     })
 
+    server.get('/thankyou', (req, res) => {
+      app.render(req, res, '/frontend/thankyou', req.query)
+    })
+
     /**
      * Generate search routes for each language
      */

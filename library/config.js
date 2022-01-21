@@ -43,10 +43,7 @@ import ErrorPage from '../patterns/core/ErrorPage'
 /* Add project specific imports here */
 import Basket, { basketVariants } from '../patterns/Basket'
 import Checkout, { checkoutVariants } from '../patterns/Checkout'
-import CheckoutUser, { checkoutUserVariants } from '../patterns/CheckoutUser'
-import CheckoutPayment, {
-  checkoutPaymentVariants,
-} from '../patterns/CheckoutPayment'
+
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
 
 export default [
@@ -182,18 +179,7 @@ export default [
     component: Checkout,
     variants: checkoutVariants,
   },
-  {
-    type: 'placeable',
-    name: 'Checkout User',
-    component: CheckoutUser,
-    variants: checkoutUserVariants,
-  },
-  {
-    type: 'placeable',
-    name: 'Checkout Payment',
-    component: CheckoutPayment,
-    variants: checkoutPaymentVariants,
-  },
+
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {
     type: 'page',

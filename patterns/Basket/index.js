@@ -1,10 +1,9 @@
 import { Button } from '..'
 
-function Basket({ basket, click }) {
+function Basket({ basket, remove, inCheckout = false }) {
   return (
-    <section className="basket">
+    <section className="basket product-detail-information">
       <h3>Basket</h3>
-
       <div id="basketContent">
         {basket?.items?.map((item) => (
           <div className="basketItem" key={item.id}>
@@ -20,20 +19,25 @@ function Basket({ basket, click }) {
               <br />
               Amount: {item.amount}
             </div>
-            <div className="basketItemActions">
-              <Button
-                variant="icon-only"
-                icon="times"
-                className="basketItem__delete"
-                onClick={(item) => click(item.id)}
-              />
-            </div>
+            {!inCheckout && (
+              <div className="basketItemActions">
+                <Button
+                  variant="icon-only"
+                  icon="times"
+                  className="basketItem__delete"
+                  onClick={() => {
+                    remove({ basketItemId: item.id, amount: item.amount })
+                  }}
+                />
+              </div>
+            )}
           </div>
         ))}
       </div>
 
       <div className="clear"></div>
       <div className="basketTotal">Basket total: {basket?.cost?.total}</div>
+      {!inCheckout && <Button href="/checkout">zu Kasse</Button>}
     </section>
   )
 }
