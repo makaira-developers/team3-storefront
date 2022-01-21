@@ -31,7 +31,9 @@ function CheckoutUser({ user }) {
 
   return (
     <section className="checkout-user">
-      <p>Firstname: {user?.billingAddress?.firstName}</p>
+      <p>
+        Name: {user?.billingAddress?.firstName} {user?.billingAddress?.lastName}
+      </p>
 
       <div className="contact-form__content">
         <FormField

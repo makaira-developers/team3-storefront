@@ -7,7 +7,7 @@ export default function CheckoutPage() {
     <main>
       <Basket basket={basket} />
       <Checkout
-        user={{ billingAddress: { firstName: 'Tom' } }}
+        user={{ billingAddress: { firstName: 'Tom', lastName: 'Taylor' } }}
         payments={[
           { id: 'invoice', name: 'Invoice' },
           { id: 'paypal', name: 'Paypal' },
