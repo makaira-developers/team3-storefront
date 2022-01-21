@@ -3,6 +3,10 @@ const PRODUCT_QUERYPART = gql`
     product {
       id
       title
+      shortDescription,
+      imageGallery{
+        icon
+      }
       price {
         price
       } 
