@@ -39,3 +39,4 @@ export { default as ContactForm } from './core/ContactForm'
 
 /* Add project specific patterns here */
 export { default as Basket } from './Basket'
+export { default as Checkout } from './Checkout'

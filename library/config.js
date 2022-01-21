@@ -42,6 +42,7 @@ import ErrorPage from '../patterns/core/ErrorPage'
 
 /* Add project specific imports here */
 import Basket, { basketVariants } from '../patterns/Basket'
+import Checkout, { checkoutVariants } from '../patterns/Checkout'
 /* CLI MARKER - PATTER IMPORT - DO NOT REMOVE */
 
 export default [
@@ -170,6 +171,12 @@ export default [
     name: 'Basket',
     component: Basket,
     variants: basketVariants,
+  },
+  {
+    type: 'placeable',
+    name: 'Checkout',
+    component: Checkout,
+    variants: checkoutVariants,
   },
   /* CLI MARKER - PATTERN CONFIG - DO NOT REMOVE */
   {
