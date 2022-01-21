@@ -1,10 +1,9 @@
-//import { Checkout } from '../../patterns'
+import { Checkout } from '../../patterns'
 
 export default function CheckoutPage() {
   return (
     <main>
-      {/* <Checkout /> */}
-      Checkout
+      <Checkout />
     </main>
   )
 }

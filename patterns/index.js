@@ -40,3 +40,5 @@ export { default as ContactForm } from './core/ContactForm'
 /* Add project specific patterns here */
 export { default as Basket } from './Basket'
 export { default as Checkout } from './Checkout'
+export { default as CheckoutUser } from './CheckoutUser'
+export { default as CheckoutPayment } from './CheckoutPayment'
